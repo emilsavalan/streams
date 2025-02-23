@@ -103,10 +103,7 @@ def main():
     
     for element in list:
         m3u8_url = "https://str.yodacdn.net/" + str(element) + "/index.m3u8?token=" + str(data_token)
-        # site_path = os.path.join(os.getcwd(), "yoda")
-        # output_file = os.path.join(site_path, str(element)) + ".m3u8"
-        f_name = str(element)+".m3u8"
-        output_file = os.path.join("yoda/", f_name)
+        output_file = "yoda/" + str(element)+".m3u8"
         response = requests.get(m3u8_url)
         lines = response.text.splitlines()
         lines = lines[:3]
