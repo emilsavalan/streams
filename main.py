@@ -6,6 +6,7 @@ import os
 from urllib.parse import urljoin
 from slugify import slugify
 from tqdm import tqdm
+from bs4 import BeautifulSoup
 
 def get_stream_url(url, pattern, method="GET", headers={}, body={}):
     if method == "GET":
@@ -75,6 +76,59 @@ def main():
                 if os.path.isfile(channel_file_path):
                     os.remove(channel_file_path)
                 
+
+
+    url = "https://yoda.az/"
+    response = requests.get(url)
+    
+    
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, "html.parser")
+        div = soup.find("div", {"data-token": True})
+        if div:
+            data_token = div["data-token"]
+        else:
+            print("No div with data-token found.")
+    else:
+        print("Failed to load the website. Status code:", response.status_code)
+    
+    
+    list = ["agrotv", "bakutv", 
+    "eltv", "real", 
+    "cbc", "start",
+    "mtvaz", "tmbaz",
+    "shtv", "showplus",
+    "kanal35", "qafkaz",
+    "ntv", "vip"]
+    
+    for element in list:
+        m3u8_url = "https://str.yodacdn.net/" + str(element) + "/index.m3u8?token=" + str(data_token)
+        output_file = "yoda/" + str(element)+".m3u8"
+        response = requests.get(m3u8_url)
+        lines = response.text.splitlines()
+        lines = lines[:3]
+        poot = ""
+        if(element == "qafkaz"): poot="1"
+        lines[2] = "https://str"+ poot +".yodacdn.net/" + str(element) + "/" + lines[2]
+        with open(output_file, "w", encoding="utf-8") as file:
+            file.write("\n".join(lines))
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__=="__main__": 
     main() 
