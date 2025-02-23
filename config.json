@@ -10,42 +10,7 @@
         "output_filter": "token",
         "headers": {},
         "channels": [
-            {
-                "name": "AZ TV",
-                "variables": [
-                    {
-                        "name": "CHANNEL_NAME",
-                        "value": "aztv"
-                    }
-                ]
-            },
-            {
-                "name": "Medeniyet TV",
-                "variables": [
-                    {
-                        "name": "CHANNEL_NAME",
-                        "value": "medeniyet"
-                    }
-                ]
-            },
-            {
-                "name": "Ictimai TV",
-                "variables": [
-                    {
-                        "name": "CHANNEL_NAME",
-                        "value": "ictimai"
-                    }
-                ]
-            },
-            {
-                "name": "ATV Azad",
-                "variables": [
-                    {
-                        "name": "CHANNEL_NAME",
-                        "value": "atvaz"
-                    }
-                ]
-            },
+           
             {
                 "name": "Xezer TV",
                 "variables": [
@@ -178,16 +143,6 @@
                     {
                         "name": "CHANNEL_NAME",
                         "value": "mtvazerbaycan"
-                    }
-                ]
-            },
-            
-            {
-                "name": "ntv",
-                "variables": [
-                    {
-                        "name": "CHANNEL_NAME",
-                        "value": "ntv"
                     }
                 ]
             }
